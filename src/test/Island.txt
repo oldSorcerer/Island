@@ -1,0 +1,71 @@
+
+public class Island {
+
+    private static Cell[][] islandMap;
+
+    public static Cell[][] getIslandMap() {
+        return islandMap;
+    }
+
+    public void generateIsland(int width, int height) {
+
+        islandMap = new Island.Cell[width][height];
+
+        for (int i = 0; i < islandMap.length; i++) {
+            for (int j = 0; j < islandMap[i].length; j++) {
+                islandMap[i][j]  = new Cell();
+                for (Population population : Population.values()) {
+                    if (!population.name().equals("PLANTS")) {
+                        for (int k = 0; k < 5 new Random().nextInt(population.getMaxPopulation()+1); k++)
+                            islandMap[i][j].animals.add((Animal) fillCell(population));}
+                    else
+                        for (int k = 0; k < 5_000 new Random().nextInt(population.getMaxPopulation()+1); k++)
+                            islandMap[i][j].plants.add((Plants) fillCell(population));
+                }
+                islandMap[i][j].allTerrain.addAll(islandMap[i][j].animals);
+                islandMap[i][j].allTerrain.addAll(islandMap[i][j].plants);
+
+                Collections.shuffle(islandMap[i][j].allTerrain);
+            }
+        }
+    }
+
+    private static Object fillCell(Population type) {
+        return switch (type) {
+            case WOLF -> new Wolf();
+            case SHEEP -> new Sheep();
+            case PLANTS -> new Plants();
+        };
+    }
+
+    public void islandViewer(){
+        System.out.printf("Animals %d Herbivores %d Predators %d Plants %d ", Animal.getAllAnimalcount(),Herbivore.getAllHerbivoresCount(),Predator.getAllPredatorsCount(), Plants.getAllPlantsCount());
+        System.out.println();
+        for (Cell[] cells : islandMap) {
+            for (Cell cell : cells) {
+                Map<Object, Integer> collect = cell.allTerrain.stream()
+                        .collect(Collectors.toMap(Object::toString, e -> 1, Integer::sum));
+                System.out.print(collect);
+            }
+            System.out.println();
+        }
+    }
+
+    public class Cell {
+        private final int x = 0;
+        private final int y = 0;
+
+        List <Animal> animals = new CopyOnWriteArrayList<>();
+        List <Plants> plants = new CopyOnWriteArrayList<>();
+        List <Object> allTerrain = new CopyOnWriteArrayList<>();
+
+        public List<Animal> getAnimalsList() {
+            return animals;
+        }
+
+        public List<Plants> getPlantsList() {
+            return plants;
+        }
+    }
+
+}

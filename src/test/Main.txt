@@ -1,0 +1,8 @@
+public class Main {
+
+    public static void main(String[] args) {
+        Island newIsland = new Island();
+        newIsland.generateIsland(2,2);
+        newIsland.islandViewer();
+    }
+}
