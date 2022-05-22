@@ -1,4 +1,4 @@
-package Another;
+package another;
 
 public abstract class Animal {
 

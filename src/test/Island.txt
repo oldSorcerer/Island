@@ -39,7 +39,7 @@ public class Island {
     }
 
     public void islandViewer(){
-        System.out.printf("Animals %d Herbivores %d Predators %d Plants %d ", Animal.getAllAnimalcount(),Herbivore.getAllHerbivoresCount(),Predator.getAllPredatorsCount(), Plants.getAllPlantsCount());
+        System.out.printf("Animals %d Herbivores %d Predators %d Plants %d ", Animal.getAllAnimalcount(),Herbivore.getAllHerbivoresCount(),predator.getAllPredatorsCount(), Plants.getAllPlantsCount());
         System.out.println();
         for (Cell[] cells : islandMap) {
             for (Cell cell : cells) {

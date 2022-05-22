@@ -1,3 +1,5 @@
+package swing;
+
 import javax.swing.JPanel;
 
 public class IslandPanel extends JPanel {

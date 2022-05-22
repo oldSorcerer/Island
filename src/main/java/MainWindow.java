@@ -1,3 +1,5 @@
+import swing.IslandPanel;
+
 import javax.swing.*;
 import java.awt.*;
 

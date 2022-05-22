@@ -4,7 +4,7 @@ import java.util.Random;
 public class Helper {
 
     public static void main(String[] args) {
-        Animals rab1 = new Rabbit();
+        Animals rab1 = new model.herbivores.Rabbit();
         int [][] fieldVisual = new int[20][20];
         printField(fieldVisual, rab1);
 

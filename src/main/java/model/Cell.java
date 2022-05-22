@@ -1,3 +1,5 @@
+package model;
+
 public class Cell {
 
    // List<Herbivorous> herbivorous = new ArrayList<>();

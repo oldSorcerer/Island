@@ -1,3 +1,5 @@
+package model;
+
 import lombok.Getter;
 
 public class Position {
