@@ -16,6 +16,7 @@ public class Position {
     public static Position now(int x, int y) {
         return new Position(x, y);
     }
+
     public Position next(Direction direction, int steps) {
         return new Position(
                 getX() + direction.getShift().getX() + steps,

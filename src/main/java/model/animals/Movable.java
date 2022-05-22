@@ -1,4 +1,4 @@
-package model;
+package model.animals;
 
 public interface Movable {
 

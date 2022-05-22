@@ -1,4 +1,7 @@
-package model.herbivores;
+package model.animals.herbivores;
+
+import model.animals.Movable;
+import model.Position;
 
 public abstract class Herbivore implements Movable {
 

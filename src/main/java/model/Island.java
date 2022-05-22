@@ -1,5 +1,7 @@
 package model;
 
+import model.animals.Movable;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -34,10 +36,4 @@ public class Island {
         System.out.println();
 
     }
-
-    public static void main(String[] args) {
-        Island island = Island.create(5, 5);
-        island.islandViewer();
-    }
-
 }

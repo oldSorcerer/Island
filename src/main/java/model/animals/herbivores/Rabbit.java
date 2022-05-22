@@ -1,8 +1,8 @@
-package model.herbivores;
+package model.animals.herbivores;
 
 import model.Island;
 import model.Position;
-import model.herbivores.Herbivore;
+
 
 public class Rabbit extends Herbivore {
 
