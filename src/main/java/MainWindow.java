@@ -1,11 +1,11 @@
-import swing.IslandPanel;
+import swing.IslandVisualizationPanel;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class MainWindow extends JFrame {
 
-    private IslandPanel mainPanel;
+    private IslandVisualizationPanel mainPanel;
 
     public MainWindow() throws HeadlessException{
         super("Island");
@@ -15,7 +15,7 @@ public class MainWindow extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(800,800);
 
-        mainPanel = new IslandPanel();
+        mainPanel = new IslandVisualizationPanel();
         mainPanel.setBackground(Color.WHITE);
         mainPanel.initialization();
 

@@ -1,4 +1,4 @@
-package model.animals;
+package test.animals;
 
 public abstract class Animal {
 

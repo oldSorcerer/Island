@@ -1,18 +1,19 @@
 package model;
 
-import model.animals.Movable;
-
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import static model.Cell.SIZE;
+
 public class Island {
 
-    int width;
-    int height;
+    private final int width;
+    private final int height;
 
-    List<Cell> cells;
-    List<Movable> units = new ArrayList<>();
+    private final List<Cell> cells;
+    private final List<DrawableUnit> units = new ArrayList<>();
 
     private Island(int width, int height, List<Cell> cells) {
         this.width = width;
@@ -27,13 +28,30 @@ public class Island {
     }
 
     public void update() {
-        units.forEach(Movable::move);
+        units.forEach(DrawableUnit::update);
     }
 
+    public void draw(Graphics2D g){
+        cells.forEach(cell -> cell.draw(g));
+        units.forEach(unit ->
+                unit.draw((Graphics2D) g.create(
+                        unit.getPosition().getX() * SIZE,
+                        unit.getPosition().getY() * SIZE,
+                        SIZE - 1,
+                        SIZE - 1)
+                )
+        );
+    }
 
-    public void islandViewer(){
-        System.out.print("Animals %d Herbivores %d Predators %d Plants %d ");
-        System.out.println();
+    public void add(DrawableUnit drawableUnit) {
+        units.add(drawableUnit);
+    }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 }

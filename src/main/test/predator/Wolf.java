@@ -1,4 +1,4 @@
-package model.animals.predator;
+package test.predator;
 
 public class Wolf extends Predator {
 }

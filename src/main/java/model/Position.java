@@ -3,9 +3,8 @@ package model;
 import lombok.Getter;
 
 public class Position {
-    @Getter
+
     private final int x;
-    @Getter
     private final int y;
 
     private Position(int x, int y) {
@@ -17,16 +16,28 @@ public class Position {
         return new Position(x, y);
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public Position next(Direction direction) {
+        return next(direction, 1);
+    }
+
     public Position next(Direction direction, int steps) {
         return new Position(
-                getX() + direction.getShift().getX() + steps,
-                getY() + direction.getShift().getY() + steps
+                getX() + direction.deltaX() + steps,
+                getY() + direction.deltaY() + steps
         );
     }
 
     public boolean isScope(int minX, int minY, int maxX, int maxY) {
-        return getX() >= maxX || getX() <= minX ||
-                getY() >= maxY || getY() <= minY;
+        return x >= maxX || x <= minX ||
+                y >= maxY || y <= minY;
     }
 
 }
