@@ -1,5 +1,7 @@
 package model;
 
+import lombok.Getter;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +11,9 @@ import static model.Cell.SIZE;
 
 public class Island {
 
+    @Getter
     private final int width;
+    @Getter
     private final int height;
 
     private final List<Cell> cells;
@@ -31,7 +35,7 @@ public class Island {
         units.forEach(DrawableUnit::update);
     }
 
-    public void draw(Graphics2D g){
+    public void draw(Graphics2D g) {
         cells.forEach(cell -> cell.draw(g));
         units.forEach(unit ->
                 unit.draw((Graphics2D) g.create(
@@ -43,15 +47,7 @@ public class Island {
         );
     }
 
-    public void add(DrawableUnit drawableUnit) {
+    public void addUnit(DrawableUnit drawableUnit) {
         units.add(drawableUnit);
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
     }
 }

@@ -1,9 +1,8 @@
-package test.herbivores;
+package model.animals.herbivores;
 
-import model.DrawableUnit;
 import model.Position;
 
-public abstract class Herbivore implements DrawableUnit {
+public abstract class Herbivore {
 
     private Position position;
 

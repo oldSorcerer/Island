@@ -1,18 +1,15 @@
 package model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public abstract class LivingUnit implements DrawableUnit {
 
+    @Getter
+    @Setter
     private Position position;
 
     public LivingUnit(Position position) {
-        this.position = position;
-    }
-
-    public Position getPosition() {
-        return position;
-    }
-
-    protected void setPosition(Position position) {
         this.position = position;
     }
 }

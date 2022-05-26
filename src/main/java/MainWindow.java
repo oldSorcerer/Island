@@ -7,13 +7,13 @@ public class MainWindow extends JFrame {
 
     private IslandVisualizationPanel mainPanel;
 
-    public MainWindow() throws HeadlessException{
+    public MainWindow() throws HeadlessException {
         super("Island");
     }
 
     public void initialization() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setSize(800,800);
+        setSize(800, 800);
 
         mainPanel = new IslandVisualizationPanel();
         mainPanel.setBackground(Color.WHITE);
@@ -21,5 +21,9 @@ public class MainWindow extends JFrame {
 
         setContentPane(mainPanel);
         setVisible(true);
+
+        //setResizable(false);
+        setLocationRelativeTo(null);
     }
 }
+

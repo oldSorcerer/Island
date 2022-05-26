@@ -1,5 +1,7 @@
 package model;
 
+import lombok.Getter;
+
 import java.awt.*;
 
 public class Cell implements DrawableUnit {
@@ -7,6 +9,7 @@ public class Cell implements DrawableUnit {
     public static final int SIZE = 20;
     public static final Color BORDER = Color.LIGHT_GRAY;
 
+    @Getter
     private final Position position;
 
     public Cell(int x, int y) {
@@ -14,24 +17,13 @@ public class Cell implements DrawableUnit {
     }
 
     @Override
-    public Position getPosition() {
-        return position;
-    }
-
-    public int getX() {
-        return position.getX();
-    }
-
-    public int getY() {
-        return position.getY();
-    }
-    @Override
     public void update() {
-        // to do
+        // nothing changes
     }
+
     public void draw(Graphics2D g) {
         g.setColor(BORDER);
-        g.drawRect(getX() * SIZE, getY() * SIZE, SIZE - 1, SIZE - 1);
+        g.drawRect(position.getX() * SIZE, position.getY() * SIZE, SIZE - 1, SIZE - 1);
     }
 }
 
