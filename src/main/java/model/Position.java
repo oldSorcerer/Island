@@ -1,7 +1,10 @@
 package model;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
+//@ToString
+@EqualsAndHashCode
 public class Position {
 
     @Getter

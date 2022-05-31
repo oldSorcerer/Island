@@ -1,12 +1,9 @@
 package swing;
 
-import model.Island;
-import model.Position;
-import model.Rabbit;
+import model.*;
 
 import javax.swing.*;
 import java.awt.*;
-//import java.awt.Graphics2D;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ThreadLocalRandom;
@@ -14,9 +11,9 @@ import java.util.stream.IntStream;
 
 public class IslandVisualizationPanel extends JPanel {
 
-    public static final int WIDTH = 30;
-    public static final int HEIGHT = 30;
-    //
+    public static final int WIDTH = 38;
+    public static final int HEIGHT = 37;
+
     private Island island;
 
     public IslandVisualizationPanel() {
@@ -32,12 +29,18 @@ public class IslandVisualizationPanel extends JPanel {
                 island.update();
                 repaint();
             }
-        }, 0, 100);
+        }, 0, 1000);
 
         IntStream.range(0, 50).forEach(i -> {
             int randX = ThreadLocalRandom.current().nextInt(WIDTH);
             int randY = ThreadLocalRandom.current().nextInt(HEIGHT);
             island.addUnit(new Rabbit(island, Position.now(randX, randY)));
+        });
+
+        IntStream.range(0, 50).forEach(i -> {
+            int randX = ThreadLocalRandom.current().nextInt(WIDTH);
+            int randY = ThreadLocalRandom.current().nextInt(HEIGHT);
+            island.addUnit(new Wolf(island, Position.now(randX, randY), Sex.random()));
         });
     }
 
@@ -48,13 +51,13 @@ public class IslandVisualizationPanel extends JPanel {
         island.draw((Graphics2D) g);
     }
 
-    private void paintField(Graphics2D g) {
+   /* private void paintField(Graphics2D g) {
         island.draw(g);
     }
 
     public void updateGame() {
         island.update();
         repaint();
-    }
+    }*/
 }
 

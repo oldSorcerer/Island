@@ -5,6 +5,7 @@ import lombok.Getter;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.IntStream;
 
 import static model.Cell.SIZE;
@@ -17,7 +18,10 @@ public class Island {
     private final int height;
 
     private final List<Cell> cells;
-    private final List<DrawableUnit> units = new ArrayList<>();
+    @Getter
+    private final List<LivingUnit> units = new CopyOnWriteArrayList<>();
+    private final List<LivingUnit> deadUnits = new CopyOnWriteArrayList<>();
+    private final List<LivingUnit> bornUnits = new CopyOnWriteArrayList<>();
 
     private Island(int width, int height, List<Cell> cells) {
         this.width = width;
@@ -33,6 +37,11 @@ public class Island {
 
     public void update() {
         units.forEach(DrawableUnit::update);
+
+        units.removeAll(deadUnits);
+        deadUnits.clear();
+        units.addAll(bornUnits);
+        bornUnits.clear();
     }
 
     public void draw(Graphics2D g) {
@@ -47,7 +56,9 @@ public class Island {
         );
     }
 
-    public void addUnit(DrawableUnit drawableUnit) {
-        units.add(drawableUnit);
+    public void addUnit(LivingUnit livingUnit) {
+        livingUnit.addDeadList(deadUnits::add);
+        livingUnit.addBirthList(bornUnits::add);
+        units.add(livingUnit);
     }
 }

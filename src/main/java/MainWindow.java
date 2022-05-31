@@ -5,9 +5,9 @@ import java.awt.*;
 
 public class MainWindow extends JFrame {
 
-    private IslandVisualizationPanel mainPanel;
+    //private IslandVisualizationPanel mainPanel;
 
-    public MainWindow() throws HeadlessException {
+    public MainWindow() {
         super("Island");
     }
 
@@ -15,7 +15,7 @@ public class MainWindow extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(800, 800);
 
-        mainPanel = new IslandVisualizationPanel();
+        IslandVisualizationPanel mainPanel = new IslandVisualizationPanel();
         mainPanel.setBackground(Color.WHITE);
         mainPanel.initialization();
 
