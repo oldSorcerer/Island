@@ -50,7 +50,7 @@ public abstract class LivingUnit implements DrawableUnit {
         deadList.add(livingUnit);
     }
 
-    public boolean isEatable(Class<? extends DrawableUnit> eatable) {
+    public boolean isEatable(Class<? extends LivingUnit> eatable) {
         return canEat.contains(eatable);
     }
 }
