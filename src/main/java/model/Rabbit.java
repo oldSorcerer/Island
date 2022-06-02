@@ -9,6 +9,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Rabbit extends LivingUnit {
 
     public static final int SIZE = 10;
+    public static final int FOOD_VALUE = 20; // вес животного дороботать позднее
     public static final Color BORDER = Color.PINK;
 
     private final Island island;

@@ -1,5 +1,8 @@
 package model;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.awt.*;
 import java.util.Arrays;
 import java.util.Collections;
@@ -7,6 +10,8 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Wolf extends LivingUnit {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(Wolf.class);
 
     private static final double BIRTH_RATE = 0.3;
     public static final int SIZE = 15;
@@ -42,7 +47,7 @@ public class Wolf extends LivingUnit {
             if (availableDir.isEmpty()) {
                 return;
             }
-            // выбераем 1 рандомное направление
+            // выбераем одно рандомное направление
             Position newPosition = availableDir.get(ThreadLocalRandom.current().nextInt(availableDir.size()));
             setPosition(newPosition); // задаем его
         }
@@ -59,7 +64,8 @@ public class Wolf extends LivingUnit {
                     .findAny()
                     .ifPresent(unit -> {
                         unit.kill();
-                        health.setCurrent(health.getCurrent() + 50);
+                        LOGGER.debug("A Wolf[{}] on {} is eating", health, getPosition());
+                        health.setCurrent(health.getCurrent() + Rabbit.FOOD_VALUE);
                     });
 
             //если текущий пол женский
@@ -79,6 +85,7 @@ public class Wolf extends LivingUnit {
                         .ifPresent(mate -> {
                             do {
                                 birth(new Wolf(island, getPosition(), Sex.random()));
+                                LOGGER.debug("New wolf was born on {}", getPosition());
                             } while (ThreadLocalRandom.current().nextDouble() < BIRTH_RATE);
                         });
             }
